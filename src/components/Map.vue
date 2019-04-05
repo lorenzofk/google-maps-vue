@@ -50,9 +50,14 @@ export default {
         return false;
       }
 
-      vm.service.findPlaceFromQuery(request, (res, status) => {
+      vm.service.textSearch(request, (res, status) => {
+        
         if (status === google.maps.places.PlacesServiceStatus.OK) {
-          vm.addMarker(res[0].geometry.location);
+          
+          for (let i = 0; i < res.length; i++) {
+            vm.addMarker(res[i].geometry.location);
+          }
+
           vm.map.setCenter(res[0].geometry.location);
         }
       });
@@ -68,7 +73,7 @@ export default {
 
       // Set the map with default position and specific configurations
       vm.map = new vm.google.maps.Map(document.getElementById('map_canvas'), {
-        zoom: 14,
+        zoom: 15,
         center: vm.position,
         disableDefaultUI: true
       });
