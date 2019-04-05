@@ -1,4 +1,4 @@
-# google-maps
+# Google Maps using VueJS
 
 ## Project setup
 ```
